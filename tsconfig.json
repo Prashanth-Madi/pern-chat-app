@@ -1,0 +1,19 @@
+
+
+{
+  "compilerOptions": {
+    "target": "ES2020",                       // Target ECMAScript version
+    "module": "NodeNext",                     // Use Node.js native ESM module resolution
+    "moduleResolution": "NodeNext",           // Module resolution strategy
+    "outDir": "./backend/dist",                       // Output directory for compiled files
+    "rootDir": "./backend/src",                       // Root directory for source files
+    "strict": true,                           // Enable all strict type-checking options
+    "esModuleInterop": true,                  // Enable interop between ES and CommonJS
+    "skipLibCheck": true                      // Skip type checking of declaration files
+  },
+  "ts-node": {
+    "esm": true                               // Ensure ts-node uses ESM mode
+  },
+  "include": ["backend/src/**/*"],                    // Files to include in compilation
+  "exclude": ["node_modules", "**/*.spec.ts", "frontend"]                 // Files to exclude from compilation
+}
