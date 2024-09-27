@@ -15,3 +15,8 @@ app.use("/api/messages",messageRoutes)
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
 });
+
+
+//TO DO LIST
+//->Add Socket.io
+//->Integrate with frontend
