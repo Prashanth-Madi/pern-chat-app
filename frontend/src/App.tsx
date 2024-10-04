@@ -1,27 +1,48 @@
 
 // import { createBrowserRouter,RouterProvider } from "react-router-dom"
-import Home from "./components/pages/home/Home"
-import LogIn from "./components/pages/login/LogIn"
-import { SignUp } from "./components/pages/signup/SignUp"
+import { createBrowserRouter,RouterProvider } from "react-router-dom"
+import Home from "./pages/home/Home"
+import LogIn from "./pages/login/LogIn"
+import { SignUp } from "./pages/signup/SignUp"
 import './index.css'
+import { Toaster } from "react-hot-toast"
+import { useAuthContext } from "./context/AuthContext"
+
+
 
 function App() {
-  // const router=createBrowserRouter([
-  //   {
-  //     path:'/',
-  //     element:<SignUp/>
-  //   },
-  //   {
+  const {authUser,isLoading}=useAuthContext();
 
-  //   }
-  // ])
+  if(isLoading) return null
+
+  const router=createBrowserRouter([
+    {
+      path:'/',
+      element:authUser?<Home/>:<LogIn/>
+    },
+    {
+      path:'/login',
+      element:authUser?<Home/>:<LogIn/>
+    },
+    {
+      path:'/signup',
+      element:authUser?<Home/>:<SignUp/>
+    },
+  ])
+  
 
   return (
-      //  <RouterProvider router={router}></RouterProvider>
-     <div className='p-4 h-screen flex items-center justify-center'>
-     <Home/>
+    <div>
+      
 
-     </div>
+<RouterProvider router={router}></RouterProvider>
+       <Toaster/>
+
+    </div>
+    //  <div className='p-4 h-screen flex items-center justify-center'>
+    //  <Home/>
+
+    //  </div>
         
      
   )

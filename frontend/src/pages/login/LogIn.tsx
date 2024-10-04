@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const LogIn = () => {
   return (
+    <div className='p-4 h-screen flex items-center justify-center'>
     <div className='p-2 flex flex-col items-center justify-center min-w-96 mx-auto'>
       <div className="h-full w-full bg-white-500 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-40 border border-gray-100">
-        <h1 className='text 3x1 font-semibold text-center text-black'>
+        <h1 className='mt-4 text-3xl font-semibold text-center text-black'>
           Login
           <span className='text-blue-500'> Wanna Chat</span>
         </h1>
@@ -43,9 +45,9 @@ const LogIn = () => {
           </div>
       </div>
       <div>
-      <a href='#' className='text-sm hover:underline hover:text-blue-600 mt-2 inline-block text-red-400'>
+      <Link to='/signup' className='text-sm hover:underline hover:text-blue-600 mt-2 inline-block text-red-400'>
       {"Don't have an account?"}
-      </a>
+      </Link>
       </div>
       <div>
         <button className='btn btn-block btn-sm mt-2'>Login</button>
@@ -53,10 +55,7 @@ const LogIn = () => {
       
       </form>
       </div>
-      
-
-      
-    
+    </div>
     </div>
   )
 }
