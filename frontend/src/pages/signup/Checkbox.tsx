@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface CheckboxProps {
-    onCheckboxChange: (gender: string) => void; // Function that accepts a string and returns void
+    onCheckboxChange: (gender: "male"|"female") => void; // Function that accepts a string and returns void
     selectedGender: string; // A string representing the gender, e.g., "male" or "female"
   }
 

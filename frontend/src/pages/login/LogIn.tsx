@@ -1,7 +1,21 @@
-import React from 'react'
+import  { useState } from 'react'
 import { Link } from 'react-router-dom'
+import useLogin from '../../hooks/useLogin';
 
 const LogIn = () => {
+    const [inputs,setInputs]=useState({
+      username:"",
+      password:""
+    })
+    const {loading,login}=useLogin();
+
+    const handleSubmit=(e:React.FormEvent)=>{
+      e.preventDefault();
+      login(inputs.username,inputs.password);
+
+    }
+
+
   return (
     <div className='p-4 h-screen flex items-center justify-center'>
     <div className='p-2 flex flex-col items-center justify-center min-w-96 mx-auto'>
@@ -10,7 +24,7 @@ const LogIn = () => {
           Login
           <span className='text-blue-500'> Wanna Chat</span>
         </h1>
-        <form className='p-4'>
+        <form className='p-4' onSubmit={handleSubmit}>
       <div>
       <label  >
         <span className='text-base label-text text-black'>Username</span>
@@ -26,7 +40,10 @@ const LogIn = () => {
             <path
               d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
           </svg>
-          <input  type="text" className="grow bg-blue-100 rounded-sm" placeholder="Email" />
+          <input  type="text"  className="grow bg-blue-100 rounded-sm" placeholder="Username"
+          value={inputs.username}
+          onChange={(e)=>setInputs({...inputs,username:e.target.value})}
+           />
         </div>
       </div>
 
@@ -41,7 +58,10 @@ const LogIn = () => {
         className='h-4 w-4 opacity-70 text-black'>
         < path d="M 25 2 C 17.832484 2 12 7.8324839 12 15 L 12 21 L 8 21 C 6.3550302 21 5 22.35503 5 24 L 5 47 C 5 48.64497 6.3550302 50 8 50 L 42 50 C 43.64497 50 45 48.64497 45 47 L 45 24 C 45 22.35503 43.64497 21 42 21 L 38 21 L 38 15 C 38 7.8324839 32.167516 2 25 2 z M 25 4 C 31.086484 4 36 8.9135161 36 15 L 36 21 L 14 21 L 14 15 C 14 8.9135161 18.913516 4 25 4 z M 8 23 L 42 23 C 42.56503 23 43 23.43497 43 24 L 43 47 C 43 47.56503 42.56503 48 42 48 L 8 48 C 7.4349698 48 7 47.56503 7 47 L 7 24 C 7 23.43497 7.4349698 23 8 23 z M 13 34 A 2 2 0 0 0 11 36 A 2 2 0 0 0 13 38 A 2 2 0 0 0 15 36 A 2 2 0 0 0 13 34 z M 21 34 A 2 2 0 0 0 19 36 A 2 2 0 0 0 21 38 A 2 2 0 0 0 23 36 A 2 2 0 0 0 21 34 z M 29 34 A 2 2 0 0 0 27 36 A 2 2 0 0 0 29 38 A 2 2 0 0 0 31 36 A 2 2 0 0 0 29 34 z M 37 34 A 2 2 0 0 0 35 36 A 2 2 0 0 0 37 38 A 2 2 0 0 0 39 36 A 2 2 0 0 0 37 34 z"></path>
         </svg>
-          <input  type="password" className="grow bg-blue-100 rounded-sm" placeholder="Password" />
+          <input  type="password"  className="grow bg-blue-100 rounded-sm" placeholder="Password"
+          value={inputs.password}
+          onChange={(e)=>{setInputs({...inputs,password:e.target.value})}}
+           />
           </div>
       </div>
       <div>
@@ -50,7 +70,7 @@ const LogIn = () => {
       </Link>
       </div>
       <div>
-        <button className='btn btn-block btn-sm mt-2'>Login</button>
+        <button className='btn btn-block btn-sm mt-2' disabled={loading} >{loading?"Loading...":"Login"}</button>
       </div>
       
       </form>
@@ -63,6 +83,7 @@ const LogIn = () => {
  export default LogIn
 
 // import React from 'react'
+import { login } from '../../../../backend/src/controllers/auth.controller';
 
 // const LogIn = () => {
 //   return (
