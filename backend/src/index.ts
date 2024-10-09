@@ -11,9 +11,10 @@ app.use(express.json())
 app.use("/api/auth",authRoutes);
 app.use("/api/messages",messageRoutes)
 
+const PORT=process.env.PORT||3000;
 
-app.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
+app.listen(PORT, () => {
+  console.log('Server running on Port '+PORT);
 });
 
 

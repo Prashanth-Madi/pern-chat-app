@@ -71,7 +71,7 @@ export const login=async(req:Request,res:Response)=>{
     //check if the username exists in the database
     const   user=await prisma.user.findUnique({where:{username}});
     if (!user){
-        return res.status(400).json({error:"Invalid USername"})
+        return res.status(400).json({error:"Invalid Username"})
     }
 
     //check if the passwords match

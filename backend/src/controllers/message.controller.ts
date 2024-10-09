@@ -97,7 +97,7 @@ export const getMessages= async(req:Request,res:Response)=>{
 
 export const getUsersForSideBar=async(req:Request,res:Response)=>{
     try{
-        console.log("inside sidebar controller")
+        // console.log("inside sidebar controller")
         const authUserId=req.user.id;
         const users=await prisma.user.findMany({
             where:{

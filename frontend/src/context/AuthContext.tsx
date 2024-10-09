@@ -44,6 +44,8 @@ export const AuthContextProvider=({children}:UserContextProviderProps)=>{
                 if(!res.ok){
                     throw new Error(data.error)
                 }
+                // console.log(data)
+                 setAuthUser(data)
             }
             catch(error:any){
                 console.log(error);
@@ -54,7 +56,7 @@ export const AuthContextProvider=({children}:UserContextProviderProps)=>{
             }
         }
         fetchAuthUser();
-    })
+    },[])
     return(
         <AuthContext.Provider
         value={{
