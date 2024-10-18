@@ -28,6 +28,7 @@
     "jsonwebtoken": "^9.0.2",
     "prisma": "^5.19.1",
     "react-hot-toast": "^2.4.1",
+    "socket.io": "^4.8.0",
     "zustand": "^5.0.0-rc.2"
   }
 }

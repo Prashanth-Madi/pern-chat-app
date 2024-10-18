@@ -8,7 +8,8 @@ export type MessageType={
     id:string,
     body:string,
     senderId:string,
-    createAt:string
+    createAt:string,
+    shouldShake?:Boolean
 
 }
 interface ConversationState{
