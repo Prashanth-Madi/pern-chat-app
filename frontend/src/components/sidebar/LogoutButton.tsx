@@ -6,7 +6,7 @@ const LogoutButton = () => {
   // const handleLogout=()=>{
   //   alert("You have been logged out")
   // }
-  const {loading,logout}=useLogout();
+  const {logout}=useLogout();
   return (
     <div className='mt-auto'>
       <SlLogout className='w-6 h-6 text-black cursor-pointer' onClick={logout}/> 

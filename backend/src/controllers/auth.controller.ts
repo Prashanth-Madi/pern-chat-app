@@ -1,10 +1,10 @@
-import { error } from 'console';
-import express,{Request,response,Response} from 'express'
+
+import express,{Request,Response} from 'express'
 import prisma from '../db/prisma.js';
 import bcryptjs from 'bcryptjs';
 import { generateToken } from '../utils/generateToken.js';
 
-const app= express();
+// const app= express();
 
 export const signup=async(req:Request,res:Response)=>{
     try{
@@ -96,6 +96,7 @@ export const login=async(req:Request,res:Response)=>{
 }
 export const logout=async(req:Request,res:Response)=>{
     try{
+        console.log(req)
         res.cookie("jwt","",{maxAge:0});
         res.status(200).json({message:"logged out successfully"})
     }
